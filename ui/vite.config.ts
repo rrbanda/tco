@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Base path for GitHub Pages deployment
-  // Change 'chef-tco-toolkit' to your repository name
-  base: process.env.NODE_ENV === 'production' ? '/chef-tco-toolkit/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/tco/' : '/',
   build: {
     outDir: 'dist',
     sourcemap: true,
