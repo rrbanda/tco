@@ -1,0 +1,52 @@
+Scenario,Category,Year_1,Year_2,Year_3,Three_Year_Total,Notes
+# Current State - Chef
+Chef_Current,Licensing,11000000,11550000,12127500,34677500,5% annual increase assumed
+Chef_Current,Infrastructure,576000,604800,635040,1815840,12 servers @ $4K/mo
+Chef_Current,Platform_Labor,9324000,9790200,10279710,29393910,45 FTEs @ $231K fully-loaded
+Chef_Current,Distributed_Labor,1663200,1746360,1833678,5243238,120 part-time @ 20%
+Chef_Current,Incident_Cost,693000,727650,764033,2184683,25 incidents/mo @ 6hrs
+Chef_Current,Technical_Debt_Tax,5495100,5769855,6058348,17323303,Labor × 1.5 debt multiplier
+Chef_Current,Training,150000,157500,165375,472875,Annual training
+Chef_Current,Contractors,500000,525000,551250,1576250,External support
+Chef_Current,TOTAL,29401300,30871365,32415434,92688099,
+
+# Scenario 1 - Ansible Migration
+Ansible_Migration,Migration_Cost_OneTime,8500000,0,0,8500000,Labor + tooling + training
+Ansible_Migration,New_Platform_License,10000000,10000000,10000000,30000000,$50/node
+Ansible_Migration,Infrastructure,400000,400000,400000,1200000,Reduced footprint
+Ansible_Migration,Platform_Labor,6930000,6930000,6930000,20790000,30 FTEs post-migration
+Ansible_Migration,Distributed_Labor,1386000,1386000,1386000,4158000,Reduced overhead
+Ansible_Migration,Incident_Cost,400000,350000,300000,1050000,Improved stability
+Ansible_Migration,Training,300000,150000,100000,550000,Frontloaded training
+Ansible_Migration,TOTAL,27916000,19216000,19116000,66248000,
+
+# Scenario 2 - Kubernetes/GitOps
+K8s_GitOps,Migration_Cost_OneTime,15000000,0,0,15000000,Higher complexity
+K8s_GitOps,New_Platform_License,0,0,0,0,Open source
+K8s_GitOps,Infrastructure,2400000,2400000,2400000,7200000,K8s cluster costs
+K8s_GitOps,Platform_Labor,9240000,8316000,7854000,25410000,Higher initially
+K8s_GitOps,Distributed_Labor,924000,924000,924000,2772000,Lower ongoing
+K8s_GitOps,Incident_Cost,500000,350000,250000,1100000,Eventual improvement
+K8s_GitOps,Training,500000,250000,150000,900000,Steep learning curve
+K8s_GitOps,TOTAL,28564000,12240000,11578000,52382000,
+
+# Scenario 3 - Hybrid (Optimize Chef + Partial Migration)
+Hybrid,Optimization_Investment,2000000,0,0,2000000,Cookbook consolidation
+Hybrid,Chef_Licensing,9000000,8000000,7000000,24000000,Reduced node count
+Hybrid,New_Platform_License,2000000,4000000,5000000,11000000,Gradual Ansible adoption
+Hybrid,Infrastructure,500000,500000,450000,1450000,Optimized
+Hybrid,Platform_Labor,8000000,7500000,7000000,22500000,Gradual reduction
+Hybrid,Distributed_Labor,1400000,1200000,1000000,3600000,Efficiency gains
+Hybrid,Incident_Cost,600000,450000,350000,1400000,Improved over time
+Hybrid,Training,250000,200000,150000,600000,
+Hybrid,TOTAL,23750000,21850000,20950000,66550000,
+
+# Scenario 4 - Chef Optimization Only
+Chef_Optimized,Optimization_Investment,3000000,1000000,500000,4500000,Consolidate to 2K cookbooks
+Chef_Optimized,Licensing,10000000,9500000,9000000,28500000,Negotiate + reduce nodes
+Chef_Optimized,Infrastructure,500000,450000,400000,1350000,Fewer servers needed
+Chef_Optimized,Platform_Labor,7000000,6500000,6000000,19500000,Smaller team needed
+Chef_Optimized,Distributed_Labor,1200000,1000000,900000,3100000,Less fragmentation
+Chef_Optimized,Incident_Cost,500000,400000,350000,1250000,Better stability
+Chef_Optimized,Training,150000,100000,100000,350000,
+Chef_Optimized,TOTAL,22350000,18950000,17250000,58550000,

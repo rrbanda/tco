@@ -1,0 +1,324 @@
+# Chef TCO Analysis - Sample Data
+# Scenario: Large Enterprise (200,000 nodes, 90,000 cookbooks)
+# 
+# This represents a typical ultra-scale Chef deployment with significant
+# technical debt due to cookbook sprawl across multiple business units.
+
+---
+metadata:
+  organization_name: "Sample Enterprise Corp"
+  assessment_date: "2026-01-21"
+  prepared_by: "TCO Analysis Team"
+  review_status: "approved"
+  version: "1.0"
+  scenario_description: |
+    This sample data represents a large enterprise with 200,000 managed nodes
+    and 90,000 total cookbooks. The high cookbook count indicates significant
+    technical debt and fragmentation across business units.
+
+---
+infrastructure:
+  total_managed_nodes:
+    value: 200000
+    confidence: 5
+    source: "Chef Automate dashboard"
+    notes: "Verified count from production Chef Automate instance"
+  
+  node_breakdown:
+    production:
+      value: 150000
+      confidence: 5
+    staging:
+      value: 30000
+      confidence: 5
+    development:
+      value: 20000
+      confidence: 5
+    other:
+      value: 0
+      confidence: 5
+      description: "No additional environments"
+  
+  chef_server_topology:
+    server_count:
+      value: 12
+      confidence: 5
+    ha_enabled: true
+    hosting_model: "hybrid"
+    cloud_provider: "aws"
+  
+  chef_client_configuration:
+    default_run_interval_minutes:
+      value: 30
+      confidence: 5
+    average_ccr_per_minute:
+      value: 6667
+      confidence: 4
+      notes: "200K nodes / 30 min = ~6,667 CCRs per minute across all servers"
+
+---
+cookbooks:
+  total_cookbooks:
+    value: 90000
+    confidence: 4
+    source: "knife cookbook list including all versions"
+    notes: "Extremely high due to version sprawl and lack of governance"
+  
+  unique_cookbook_names:
+    value: 15000
+    confidence: 4
+    notes: "Average of 6 versions per cookbook"
+  
+  active_cookbooks:
+    value: 12000
+    confidence: 3
+    definition: "Used in at least one run-list in last 90 days"
+  
+  average_versions_per_cookbook:
+    value: 6
+    confidence: 4
+  
+  cookbook_categorization:
+    wrapper_cookbooks:
+      value: 4800
+      confidence: 3
+      notes: "40% - Many teams create custom wrappers"
+    library_cookbooks:
+      value: 1800
+      confidence: 3
+      notes: "15% - Shared infrastructure components"
+    application_cookbooks:
+      value: 4800
+      confidence: 3
+      notes: "40% - Application-specific deployments"
+    community_cookbooks:
+      value: 600
+      confidence: 4
+      notes: "5% - From Chef Supermarket, mostly modified"
+  
+  complexity_distribution:
+    tier1_simple:
+      value: 7200
+      confidence: 3
+      description: "60% - Simple config, <100 lines, no dependencies"
+    tier2_standard:
+      value: 3600
+      confidence: 3
+      description: "30% - Standard app cookbook, 100-500 lines"
+    tier3_complex:
+      value: 1200
+      confidence: 3
+      description: "10% - Complex, >500 lines, multiple dependencies"
+  
+  runlist_statistics:
+    average_cookbooks_per_node:
+      value: 8
+      confidence: 4
+    max_cookbooks_per_node:
+      value: 45
+      confidence: 4
+
+---
+team:
+  dedicated_chef_engineers:
+    value: 45
+    confidence: 5
+    notes: "Platform engineering team dedicated to Chef"
+  
+  part_time_contributors:
+    - role: "Application Developer"
+      headcount: 80
+      chef_allocation_percent: 15
+      confidence: 3
+    - role: "DevOps Engineer"
+      headcount: 30
+      chef_allocation_percent: 40
+      confidence: 4
+    - role: "System Administrator"
+      headcount: 10
+      chef_allocation_percent: 30
+      confidence: 3
+  
+  compensation:
+    average_engineer_salary:
+      value: 165000
+      confidence: 4
+      currency: "USD"
+      notes: "Blended average across all levels"
+    benefits_multiplier:
+      value: 1.4
+      confidence: 4
+      notes: "Includes benefits, taxes, overhead, equipment"
+  
+  location_distribution:
+    - location: "San Francisco, CA"
+      headcount: 20
+      cost_of_living_index: 1.4
+    - location: "Austin, TX"
+      headcount: 15
+      cost_of_living_index: 1.0
+    - location: "Remote (US)"
+      headcount: 10
+      cost_of_living_index: 0.9
+  
+  contractor_spend:
+    annual_contractor_cost:
+      value: 500000
+      confidence: 4
+      notes: "Specialized Chef consultants for complex migrations"
+
+---
+incidents:
+  chef_related_incidents:
+    monthly_average:
+      value: 25
+      confidence: 4
+      period: "last 12 months"
+    
+    severity_distribution:
+      critical:
+        count: 2
+        average_mttr_hours: 12
+      high:
+        count: 5
+        average_mttr_hours: 8
+      medium:
+        count: 10
+        average_mttr_hours: 4
+      low:
+        count: 8
+        average_mttr_hours: 2
+  
+  incident_cost_estimation:
+    average_hourly_cost_of_downtime:
+      value: 50000
+      confidence: 3
+      notes: "Estimated revenue impact for critical systems"
+    average_engineers_per_incident:
+      value: 2.5
+      confidence: 4
+
+---
+licensing:
+  current_chef_license:
+    annual_cost:
+      value: 11000000
+      confidence: 5
+      source: "Finance - Vendor invoice"
+    contract_start_date: "2024-07-01"
+    contract_end_date: "2027-06-30"
+    licensed_node_count: 200000
+    tier: "enterprise_plus"
+    includes_habitat: true
+    includes_inspec: true
+    includes_automate: true
+  
+  additional_tooling:
+    - name: "Test Kitchen Enterprise"
+      annual_cost: 50000
+      purpose: "Cookbook testing infrastructure"
+    - name: "Artifactory"
+      annual_cost: 75000
+      purpose: "Cookbook artifact storage (partial allocation)"
+
+infrastructure_costs:
+  chef_server_infrastructure:
+    monthly_cost:
+      value: 48000
+      confidence: 4
+    breakdown:
+      compute: 30000
+      storage: 12000
+      network: 4000
+      other: 2000
+  
+  chef_automate_infrastructure:
+    monthly_cost:
+      value: 15000
+      confidence: 4
+  
+  related_infrastructure:
+    ci_cd_for_cookbooks:
+      monthly_cost: 15000
+      confidence: 4
+    artifact_storage:
+      monthly_cost: 5000
+      confidence: 4
+
+training_and_support:
+  annual_training_budget:
+    value: 150000
+    confidence: 4
+  vendor_support_cost:
+    value: 0
+    confidence: 5
+    notes: "Included in Enterprise Plus licensing"
+
+---
+strategic_context:
+  modernization_drivers:
+    - "Reduce TCO by 30%+ over 3 years"
+    - "Improve deployment velocity and reliability"
+    - "Address skill availability - easier to hire for modern tools"
+    - "Support cloud-native and containerized workloads"
+    - "Reduce technical debt and cookbook sprawl"
+  
+  constraints:
+    - "Must maintain compliance certifications during transition"
+    - "Cannot exceed 24-month migration timeline"
+    - "Legacy systems require extended support (3+ years)"
+    - "Budget for migration capped at $15M one-time"
+  
+  alternatives_considered:
+    - platform: "Ansible"
+      status: "evaluating"
+      notes: "Strong contender - good skill availability, similar paradigm"
+    - platform: "Kubernetes/GitOps"
+      status: "piloting"
+      notes: "Pilot underway for containerized workloads"
+    - platform: "Terraform"
+      status: "evaluating"
+      notes: "For cloud infrastructure, complementary to other tools"
+  
+  key_stakeholders:
+    - name: "CTO"
+      role: "Executive Sponsor"
+      interest: "cost, technology"
+    - name: "VP Infrastructure"
+      role: "Decision Maker"
+      interest: "operations, technology"
+    - name: "Director Platform Engineering"
+      role: "Technical Lead"
+      interest: "technology, operations"
+    - name: "CFO"
+      role: "Budget Approver"
+      interest: "cost"
+
+---
+validation:
+  data_completeness:
+    infrastructure_complete: true
+    cookbooks_complete: true
+    team_complete: true
+    incidents_complete: true
+    financial_complete: true
+  
+  cross_validation:
+    - check: "node_breakdown sums to total_managed_nodes"
+      passed: true
+    - check: "cookbook_categorization sums to active_cookbooks"
+      passed: true
+    - check: "complexity_distribution sums to active_cookbooks"
+      passed: true
+  
+  minimum_confidence_met:
+    infrastructure: true
+    financial: true
+    team: true
+    incidents: true
+  
+  reviewer_notes: |
+    Sample data validated for internal consistency.
+    High cookbook count is intentional to demonstrate technical debt scenario.
+    All financial data cross-referenced with sample invoices.
+    Team data estimated based on typical enterprise ratios.

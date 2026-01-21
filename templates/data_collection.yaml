@@ -1,0 +1,305 @@
+# Chef TCO Analysis - Data Collection Template
+# Version: 1.0
+# 
+# Instructions:
+# 1. Fill in all values marked with <placeholder>
+# 2. Assign a confidence score (1-5) to each value
+# 3. Add notes explaining data sources and assumptions
+#
+# Confidence Scores:
+#   5: Verified from system of record (Chef Automate, HR system, invoices)
+#   4: Estimated from reliable sampling (>80% coverage)
+#   3: Educated estimate with some validation
+#   2: Rough estimate, needs refinement
+#   1: Unknown, using industry default
+
+---
+# Metadata
+metadata:
+  organization_name: "<Organization Name>"
+  assessment_date: "YYYY-MM-DD"
+  prepared_by: "<Analyst Name>"
+  review_status: "draft"  # draft | reviewed | approved
+  version: "1.0"
+
+---
+# Infrastructure Data
+infrastructure:
+  total_managed_nodes:
+    value: <number>
+    confidence: <1-5>
+    source: "Chef Automate node count"
+    notes: ""
+  
+  node_breakdown:
+    production:
+      value: <number>
+      confidence: <1-5>
+    staging:
+      value: <number>
+      confidence: <1-5>
+    development:
+      value: <number>
+      confidence: <1-5>
+    other:
+      value: <number>
+      confidence: <1-5>
+      description: "<describe other environments>"
+  
+  chef_server_topology:
+    server_count:
+      value: <number>
+      confidence: <1-5>
+    ha_enabled: <true|false>
+    hosting_model: "<cloud|on-prem|hybrid>"
+    cloud_provider: "<aws|gcp|azure|none>"
+  
+  chef_client_configuration:
+    default_run_interval_minutes:
+      value: <number>  # typically 30
+      confidence: <1-5>
+    average_ccr_per_minute:
+      value: <number>
+      confidence: <1-5>
+      notes: "Calculate as: nodes / run_interval_minutes"
+
+---
+# Cookbook Data
+cookbooks:
+  total_cookbooks:
+    value: <number>
+    confidence: <1-5>
+    source: "knife cookbook list | wc -l"
+    notes: "Includes all versions"
+  
+  unique_cookbook_names:
+    value: <number>
+    confidence: <1-5>
+    notes: "Excluding version numbers"
+  
+  active_cookbooks:
+    value: <number>
+    confidence: <1-5>
+    definition: "Used in at least one run-list in last 90 days"
+  
+  average_versions_per_cookbook:
+    value: <number>
+    confidence: <1-5>
+  
+  cookbook_categorization:
+    wrapper_cookbooks:
+      value: <number>
+      confidence: <1-5>
+      notes: "Cookbooks that customize community/other cookbooks"
+    library_cookbooks:
+      value: <number>
+      confidence: <1-5>
+      notes: "Reusable, shared functionality"
+    application_cookbooks:
+      value: <number>
+      confidence: <1-5>
+      notes: "Deploy specific applications"
+    community_cookbooks:
+      value: <number>
+      confidence: <1-5>
+      notes: "From Chef Supermarket, unmodified"
+  
+  complexity_distribution:
+    tier1_simple:
+      value: <number>
+      confidence: <1-5>
+      description: "Simple config, <100 lines, no dependencies"
+    tier2_standard:
+      value: <number>
+      confidence: <1-5>
+      description: "Standard app cookbook, 100-500 lines, few dependencies"
+    tier3_complex:
+      value: <number>
+      confidence: <1-5>
+      description: "Complex, >500 lines, multiple dependencies, custom resources"
+  
+  runlist_statistics:
+    average_cookbooks_per_node:
+      value: <number>
+      confidence: <1-5>
+    max_cookbooks_per_node:
+      value: <number>
+      confidence: <1-5>
+
+---
+# Team Data
+team:
+  dedicated_chef_engineers:
+    value: <number>
+    confidence: <1-5>
+    notes: "FTEs whose primary role is Chef platform"
+  
+  part_time_contributors:
+    - role: "<role title>"
+      headcount: <number>
+      chef_allocation_percent: <number>  # e.g., 20 for 20%
+      confidence: <1-5>
+    # Add more roles as needed
+  
+  compensation:
+    average_engineer_salary:
+      value: <number>
+      confidence: <1-5>
+      currency: "USD"
+      notes: "Base salary before benefits"
+    benefits_multiplier:
+      value: <number>  # typically 1.3-1.5
+      confidence: <1-5>
+      notes: "Includes benefits, taxes, overhead"
+  
+  location_distribution:
+    - location: "<city/country>"
+      headcount: <number>
+      cost_of_living_index: <number>  # 1.0 = US national average
+  
+  contractor_spend:
+    annual_contractor_cost:
+      value: <number>
+      confidence: <1-5>
+      notes: "External contractors for Chef work"
+
+---
+# Incident Data
+incidents:
+  chef_related_incidents:
+    monthly_average:
+      value: <number>
+      confidence: <1-5>
+      period: "last 12 months"
+    
+    severity_distribution:
+      critical:  # P1 - business impact
+        count: <number>
+        average_mttr_hours: <number>
+      high:  # P2 - significant impact
+        count: <number>
+        average_mttr_hours: <number>
+      medium:  # P3 - moderate impact
+        count: <number>
+        average_mttr_hours: <number>
+      low:  # P4 - minimal impact
+        count: <number>
+        average_mttr_hours: <number>
+  
+  incident_cost_estimation:
+    average_hourly_cost_of_downtime:
+      value: <number>
+      confidence: <1-5>
+      notes: "Revenue impact per hour of outage"
+    average_engineers_per_incident:
+      value: <number>
+      confidence: <1-5>
+
+---
+# Financial Data
+licensing:
+  current_chef_license:
+    annual_cost:
+      value: <number>
+      confidence: <1-5>
+      source: "Procurement/Finance records"
+    contract_start_date: "YYYY-MM-DD"
+    contract_end_date: "YYYY-MM-DD"
+    licensed_node_count: <number>
+    tier: "<business|enterprise|enterprise_plus>"
+    includes_habitat: <true|false>
+    includes_inspec: <true|false>
+    includes_automate: <true|false>
+  
+  additional_tooling:
+    - name: "<tool name>"
+      annual_cost: <number>
+      purpose: "<description>"
+
+infrastructure_costs:
+  chef_server_infrastructure:
+    monthly_cost:
+      value: <number>
+      confidence: <1-5>
+    breakdown:
+      compute: <number>
+      storage: <number>
+      network: <number>
+      other: <number>
+  
+  chef_automate_infrastructure:
+    monthly_cost:
+      value: <number>
+      confidence: <1-5>
+  
+  related_infrastructure:
+    ci_cd_for_cookbooks:
+      monthly_cost: <number>
+      confidence: <1-5>
+    artifact_storage:
+      monthly_cost: <number>
+      confidence: <1-5>
+
+training_and_support:
+  annual_training_budget:
+    value: <number>
+    confidence: <1-5>
+  vendor_support_cost:
+    value: <number>
+    confidence: <1-5>
+    notes: "If separate from licensing"
+
+---
+# Strategic Context
+strategic_context:
+  modernization_drivers:
+    - "<driver 1: e.g., cost reduction>"
+    - "<driver 2: e.g., skill availability>"
+    - "<driver 3: e.g., cloud-native adoption>"
+  
+  constraints:
+    - "<constraint 1: e.g., compliance requirements>"
+    - "<constraint 2: e.g., migration timeline>"
+  
+  alternatives_considered:
+    - platform: "Ansible"
+      status: "<evaluating|piloting|rejected>"
+      notes: ""
+    - platform: "Kubernetes/GitOps"
+      status: "<evaluating|piloting|rejected>"
+      notes: ""
+    - platform: "Terraform"
+      status: "<evaluating|piloting|rejected>"
+      notes: ""
+  
+  key_stakeholders:
+    - name: "<name>"
+      role: "<role>"
+      interest: "<cost|technology|operations>"
+
+---
+# Validation Checklist
+validation:
+  data_completeness:
+    infrastructure_complete: <true|false>
+    cookbooks_complete: <true|false>
+    team_complete: <true|false>
+    incidents_complete: <true|false>
+    financial_complete: <true|false>
+  
+  cross_validation:
+    - check: "node_breakdown sums to total_managed_nodes"
+      passed: <true|false>
+    - check: "cookbook_categorization sums to active_cookbooks"
+      passed: <true|false>
+    - check: "complexity_distribution sums to active_cookbooks"
+      passed: <true|false>
+  
+  minimum_confidence_met:
+    infrastructure: <true|false>  # requires avg >= 4
+    financial: <true|false>  # requires avg >= 4
+    team: <true|false>  # requires avg >= 3
+    incidents: <true|false>  # requires avg >= 3
+  
+  reviewer_notes: |
+    <Add any notes from data review here>

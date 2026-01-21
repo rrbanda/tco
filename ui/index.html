@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/chef-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chef Infrastructure TCO Analysis Toolkit - Data-driven cost analysis for Chef infrastructure modernization" />
+    <meta name="theme-color" content="#3b82f6" />
+    <title>Chef TCO Analyzer</title>
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Chef TCO Analyzer" />
+    <meta property="og:description" content="Data-driven Total Cost of Ownership analysis for Chef infrastructure" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <style>
+      /* Loading spinner for initial load */
+      .loading-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+      }
+      .loading-spinner::after {
+        content: '';
+        width: 48px;
+        height: 48px;
+        border: 4px solid #e2e8f0;
+        border-top-color: #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Print styles */
+      @media print {
+        body { 
+          -webkit-print-color-adjust: exact; 
+          print-color-adjust: exact;
+        }
+        .print\\:hidden { display: none !important; }
+        .print\\:block { display: block !important; }
+        .print\\:break-before-page { break-before: page; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

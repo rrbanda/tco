@@ -1,0 +1,40 @@
+Category,Parameter,Value,Unit,Confidence,Notes
+# Infrastructure
+Infrastructure,Total Managed Nodes,200000,nodes,5,From Chef Automate
+Infrastructure,Production Nodes,150000,nodes,5,
+Infrastructure,Staging Nodes,30000,nodes,5,
+Infrastructure,Development Nodes,20000,nodes,5,
+Infrastructure,Chef Server Count,12,servers,5,HA cluster
+Infrastructure,Monthly Server Cost,4000,USD,4,Per server
+Infrastructure,Chef Client Run Interval,30,minutes,5,
+
+# Cookbooks
+Cookbooks,Total Cookbooks (all versions),90000,cookbooks,4,Includes all versions
+Cookbooks,Unique Cookbook Names,15000,cookbooks,4,Excluding versions
+Cookbooks,Active Cookbooks (90 days),12000,cookbooks,3,Used recently
+Cookbooks,Tier 1 Simple,7200,cookbooks,3,60% of active
+Cookbooks,Tier 2 Standard,3600,cookbooks,3,30% of active
+Cookbooks,Tier 3 Complex,1200,cookbooks,3,10% of active
+Cookbooks,Avg Cookbooks per Node,8,cookbooks,4,Run-list size
+
+# Team
+Team,Dedicated Chef Engineers,45,FTEs,5,Platform team
+Team,Part-Time Contributors,120,people,4,Application teams
+Team,Part-Time Allocation,20,%,3,Average allocation
+Team,Average Engineer Salary,165000,USD,4,Base salary
+Team,Benefits Multiplier,1.4,multiplier,4,Fully-loaded cost
+
+# Incidents
+Incidents,Monthly Chef Incidents,25,incidents,4,Last 12 months avg
+Incidents,Average MTTR,6,hours,4,Across all severities
+Incidents,Engineers per Incident,2.5,people,3,Average involvement
+
+# Licensing
+Licensing,Annual Chef License Cost,11000000,USD,5,Enterprise Plus
+Licensing,Negotiated Rate per Node,55,USD,5,Volume discount
+Licensing,Contract End Date,2027-06-30,date,5,
+
+# Additional Costs
+Additional,Annual Training Budget,150000,USD,4,
+Additional,CI/CD Infrastructure Monthly,15000,USD,4,For cookbook testing
+Additional,Contractor Spend Annual,500000,USD,4,External support

@@ -1,0 +1,34 @@
+Category,Metric,Healthy_Low,Healthy_High,Warning_Low,Warning_High,Critical_Threshold,Unit
+Health,Cookbooks per 1000 Nodes,5,25,25,100,100,ratio
+Health,Active Cookbook Versions,1,3,3,10,10,versions
+Health,Cookbooks per FTE,150,250,75,150,75,ratio
+Health,CCRs per Server,0,333,333,500,500,per minute
+Health,Run-list Size,5,15,15,30,30,cookbooks
+
+Cost,Chef Enterprise List Price,189,189,,,,,USD/node
+Cost,Chef Enterprise Negotiated (10K+),35,75,,,,,USD/node
+Cost,Chef Enterprise Negotiated (100K+),25,65,,,,,USD/node
+Cost,Sr DevOps Salary Low,140000,140000,,,,,USD
+Cost,Sr DevOps Salary Median,165000,165000,,,,,USD
+Cost,Sr DevOps Salary High,190000,190000,,,,,USD
+Cost,Cloud Chef Server Monthly,2500,8000,,,,,USD
+
+Multiplier,Debt Multiplier (<25 cookbooks/1K nodes),1.0,1.0,,,,,factor
+Multiplier,Debt Multiplier (25-50),1.1,1.1,,,,,factor
+Multiplier,Debt Multiplier (50-100),1.25,1.25,,,,,factor
+Multiplier,Debt Multiplier (100-250),1.5,1.5,,,,,factor
+Multiplier,Debt Multiplier (250-500),2.0,2.0,,,,,factor
+Multiplier,Debt Multiplier (>500),2.5,2.5,,,,,factor
+
+Migration,Ansible Per Node Cost,50,100,,,,,USD
+Migration,K8s/GitOps Per Node Cost,20,40,,,,,USD
+Migration,Terraform Per Node Cost,10,30,,,,,USD
+Migration,Puppet Per Node Cost,100,150,,,,,USD
+
+Productivity,Cookbooks Maintained per FTE (Healthy),200,250,,,,,cookbooks/year
+Productivity,Cookbooks Maintained per FTE (Degraded),75,150,,,,,cookbooks/year
+Productivity,Migration Rate to Ansible,2,3,,,,,cookbooks/week
+Productivity,Migration Rate to K8s,1,2,,,,,cookbooks/week
+Productivity,Tier 1 Migration Hours,4,4,,,,,hours
+Productivity,Tier 2 Migration Hours,16,16,,,,,hours
+Productivity,Tier 3 Migration Hours,40,40,,,,,hours
